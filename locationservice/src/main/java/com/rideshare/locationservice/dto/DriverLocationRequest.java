@@ -1,4 +1,4 @@
-package com.rideshare.location_service.dto;
+package com.rideshare.locationservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
