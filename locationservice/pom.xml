@@ -5,9 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.1.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+		<version>3.5.4</version>
+	</parent>GTIGIT
 	<groupId>com.rideshare</groupId>
 	<artifactId>location-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
