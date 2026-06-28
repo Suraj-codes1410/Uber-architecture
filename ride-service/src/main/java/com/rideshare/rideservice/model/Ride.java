@@ -17,14 +17,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Ride {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     //Who requested the ride
     @Column(nullable = false)
     private String riderId;
 
-    //Who accepted the ride
-    @Column(nullable = false)
+
     private String driverId;
 
     @Column(nullable = false)
