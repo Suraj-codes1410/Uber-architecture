@@ -22,3 +22,118 @@ This project demonstrates how large-scale ride-hailing platforms handle ride req
 - Clean Layered Architecture
 
 ---
+
+# 🏗 Architecture
+
+```
+                   Client
+                      │
+                      ▼
+              Ride Service
+                      │
+          RideRequestedEvent
+                      │
+                      ▼
+                Apache Kafka
+                      │
+                      ▼
+            Matching Service
+                      │
+      Fetch Nearby Drivers (Feign)
+                      │
+                      ▼
+            Location Service
+                      │
+        Redis GEO Search Engine
+                      │
+                      ▼
+            Matching Service
+                      │
+          RideMatchedEvent
+                      │
+                      ▼
+                Apache Kafka
+                      │
+                      ▼
+              Ride Service
+                      │
+                      ▼
+            Ride Updated Successfully
+```
+
+---
+
+# 📦 Microservices
+
+## 🚖 Ride Service
+
+Responsible for
+
+- Creating rides
+- Managing ride lifecycle
+- Fare estimation
+- Publishing RideRequestedEvent
+- Consuming RideMatchedEvent
+- Updating ride status
+
+### APIs
+
+```
+POST   /api/v1/rides/request
+
+GET    /api/v1/rides/{rideId}
+
+GET    /api/v1/rides/rider/{riderId}
+
+PUT    /api/v1/rides/{rideId}/start
+
+PUT    /api/v1/rides/{rideId}/complete
+
+PUT    /api/v1/rides/{rideId}/cancel
+```
+
+---
+
+## 🚗 Matching Service
+
+Responsible for
+
+- Consuming RideRequestedEvent
+- Finding nearby drivers
+- Driver scoring algorithm
+- Selecting the best driver
+- Publishing RideMatchedEvent
+
+### Driver Selection
+
+Drivers are ranked using:
+
+```
+Score =
+(1 / Distance) × 70%
++
+Driver Rating × 30%
+```
+
+Closest driver with highest score is assigned.
+
+---
+
+## 📍 Location Service
+
+Responsible for
+
+- Driver location updates
+- Nearby driver search
+- Redis GEO indexing
+- Geospatial radius queries
+
+### APIs
+
+```
+POST /api/v1/locations/update
+
+GET  /api/v1/locations/drivers/nearby
+```
+
+---
