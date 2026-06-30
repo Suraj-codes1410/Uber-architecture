@@ -280,3 +280,177 @@ uber-architecture/
 ```
 
 ---
+
+# 🚀 Getting Started
+
+## Clone
+
+```bash
+git clone https://github.com/yourusername/uber-architecture.git
+```
+
+```
+cd uber-architecture
+```
+
+---
+
+## Start Infrastructure
+
+Start
+
+- Kafka
+- Zookeeper (if required)
+- MySQL
+- Redis
+
+using Docker.
+
+```bash
+docker compose up -d
+```
+
+---
+
+## Run Services
+
+### Ride Service
+
+```bash
+cd ride-service
+mvn spring-boot:run
+```
+
+Runs on
+
+```
+localhost:8083
+```
+
+---
+
+### Matching Service
+
+```bash
+cd matching-service
+mvn spring-boot:run
+```
+
+Runs on
+
+```
+localhost:8084
+```
+
+---
+
+### Location Service
+
+```bash
+cd location-service
+mvn spring-boot:run
+```
+
+Runs on
+
+```
+localhost:8082
+```
+
+---
+
+# 📬 Sample Ride Request
+
+```json
+{
+  "riderId": "RIDER001",
+  "pickupLatitude": 28.6139,
+  "pickupLongitude": 77.2090,
+  "pickupAddress": "Connaught Place",
+
+  "dropLatitude": 28.5355,
+  "dropLongitude": 77.3910,
+  "dropAddress": "Noida"
+}
+```
+
+---
+
+# 🔄 Ride Lifecycle
+
+```
+REQUESTED
+
+↓
+
+MATCHING
+
+↓
+
+ACCEPTED
+
+↓
+
+RIDE_STARTED
+
+↓
+
+COMPLETED
+```
+
+or
+
+```
+REQUESTED
+
+↓
+
+CANCELLED
+```
+
+---
+
+# 📈 Future Enhancements
+
+- API Gateway
+- Service Discovery (Eureka)
+- Authentication & Authorization (JWT)
+- Driver Service
+- Payment Service
+- Notification Service
+- Surge Pricing Engine
+- Trip History Service
+- Kubernetes Deployment
+- Prometheus & Grafana Monitoring
+- Distributed Tracing (Zipkin)
+
+---
+
+# 🎯 Learning Outcomes
+
+This project demonstrates:
+
+- Microservices Design
+- Event-Driven Architecture
+- Kafka Messaging
+- Distributed Systems
+- Inter-Service Communication
+- REST API Design
+- Redis GEO Search
+- Database Modeling
+- Clean Code Principles
+- Layered Architecture
+- Spring Boot Best Practices
+
+---
+
+# 👨‍💻 Author
+
+**Suraj Samanta**
+
+- LinkedIn: https://linkedin.com/in/suraj-samanta1410
+- GitHub: https://github.com/Suraj-codes1410
+
+---
+
+## ⭐ If you found this project helpful, consider giving it a star!
