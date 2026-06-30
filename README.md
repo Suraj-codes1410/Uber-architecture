@@ -137,3 +137,146 @@ GET  /api/v1/locations/drivers/nearby
 ```
 
 ---
+
+# 📡 Event Flow
+
+## Ride Requested
+
+```
+Client
+
+↓
+
+Ride Service
+
+↓
+
+Save Ride
+
+↓
+
+Publish RideRequestedEvent
+
+↓
+
+Kafka
+
+↓
+
+Matching Service
+
+↓
+
+Find Drivers
+
+↓
+
+Publish RideMatchedEvent
+
+↓
+
+Kafka
+
+↓
+
+Ride Service
+
+↓
+
+Ride Assigned
+```
+
+---
+
+# 🛠 Tech Stack
+
+### Backend
+
+- Java 21
+- Spring Boot
+- Spring Data JPA
+- Spring Web
+- Spring Validation
+- Spring Cloud OpenFeign
+
+### Messaging
+
+- Apache Kafka
+
+### Database
+
+- MySQL
+
+### Cache / Geo Search
+
+- Redis
+
+### Build Tool
+
+- Maven
+
+### Utilities
+
+- Lombok
+
+---
+
+# 📂 Project Structure
+
+```
+uber-architecture/
+
+│
+
+├── ride-service/
+
+│     ├── controller
+
+│     ├── service
+
+│     ├── repository
+
+│     ├── dto
+
+│     ├── event
+
+│     ├── model
+
+│     └── config
+
+│
+
+├── matching-service/
+
+│     ├── consumer
+
+│     ├── service
+
+│     ├── client
+
+│     ├── dto
+
+│     ├── event
+
+│     └── config
+
+│
+
+├── location-service/
+
+│     ├── controller
+
+│     ├── service
+
+│     ├── repository
+
+│     ├── model
+
+│     └── config
+
+│
+
+└── docker-compose.yml
+```
+
+---
